@@ -1,0 +1,301 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+directive @hasRole(role: Role!) on FIELD_DEFINITION
+
+scalar Void
+scalar Time
+scalar Upload
+
+enum Role {
+	# All users
+	USER
+	# System administrator
+	ADMIN
+	# Program managers
+	PROGRAMMANAGER
+	# Reviewers
+	REVIEWER
+	# Applicants
+	APPLICANT
+}
+
+enum FieldType {
+	# Plain text
+	DEFAULT
+	# Number
+	NUMBER
+	# Email
+	EMAIL
+}
+
+enum ReasonRubricType {
+	# No reason
+	NONE
+	# Recommendation
+	RECOMMENDATION
+	# Direct admission
+	DIRECTADMISSION
+}
+
+enum AppliedStatusType {
+	APPLIED
+	APPLIEDACCEPTED
+	APPLIEDREJECTED
+}
+
+type User {
+	id: ID!
+	name: String!
+	email: String!
+}
+
+type Profile {
+	role: Role!
+	idNumber: String!
+	birthday: Time!
+	telephone: String!
+	cellphone: String!
+	address: String!
+	school: String!
+}
+
+type AppliedStatus {
+	programName: String!
+	status: AppliedStatusType!
+	# Return an empty array if no letter to write
+	recommendLetter: [Boolean!]!
+}
+
+type Program {
+	id: ID!
+	name: String!
+	openAt: Time!
+	closeAt: Time!
+}
+
+type ProgramStatus {
+	formBuilded: Boolean!
+	docSetup: Boolean!
+	oralSetup: Boolean!
+}
+
+type ReviewResult {
+	applicants: [User!]!
+	reviewers: [User!]!
+	rubrics: [ReviewRubric!]!
+}
+
+type ReviewRubric {
+	applicant: User!
+	reviewer: User!
+	# Null if not setup
+	scores: [Int!]
+	# Null if not setup
+	total: Int
+	# Null if not setup
+	reason: String
+}
+
+type ReviewProgress {
+	reviewer: User!
+	# Num of reviewed
+	done: Int!
+	# Num to review
+	total: Int!
+}
+
+
+type ProgramForm { # Program form format
+	# Program form format
+	basic: [BasicField!]!
+	upload: [UploadField!]!
+	recommendLetterNumber: Int!
+}
+
+# Form basic field format
+type BasicField {
+	name: String!
+	required: Boolean!
+	type: FieldType!
+}
+
+# Form upload field format
+type UploadField {
+	name: String!
+	required: Boolean!
+}
+
+# Applicant submitted form
+type SubmittedForm {
+	basic: [String!]!
+	# Url to file
+	uploads: [String!]!
+	recommendLetters: [SubmittedRecommendLetter!]!
+}
+
+# Recommender submitted letter
+type SubmittedRecommendLetter {
+	recommenderName: String!
+	phone: String!
+	email: String!
+	organization: String!
+	content: String!
+}
+
+input NewRegister {
+	name: String!
+	email: String!
+	password: String!
+	profile: NewProfile!
+}
+
+# For register and update, null field will not update
+input NewProfile {
+	name: String
+	idNumber: String
+	birthday: Time
+	telephone: String
+	cellphone: String
+	address: String
+	school: String
+}
+
+input NewSubmitForm {
+	programId: ID!
+	applicantId: ID!
+	data: [NewSubmitData!]!
+	files: [NewSubmitFile!]!
+	recommender: [NewSubmitRecommender!]!
+}
+
+# Basic field
+input NewSubmitData {
+	formFieldId: ID!
+	value: String!
+}
+
+input NewSubmitFile {
+	formFieldId: ID!
+	value: Upload!
+}
+
+# Recommender info
+input NewSubmitRecommender {
+	recommenderName: String!
+	phone: String!
+	email: String!
+	organization: String!
+}
+
+# Form building for program
+input NewBuildForm {
+	programId: ID!
+	basic: [NewBasicField!]!
+	uploads: [NewUploadField!]!
+	recommendLetterNumber: Int!
+	openAt: Time!
+	closeAt: Time!
+}
+
+input NewBasicField {
+	name: String!
+	required: Boolean!
+	type: FieldType!
+}
+
+input NewUploadField {
+	name: String!
+	required: Boolean!
+}
+
+# Review settings for program
+input NewReviewSetting {
+	programId: ID!
+	rubric: NewRubricSetting!
+	applicantIds: [ID!]!
+	reviewerIds: [ID!]!
+	distribution: [[Boolean!]!]!
+}
+
+# Rubric settings for program
+input NewRubricSetting {
+	score: NewScoreRubricSetting!
+	reason: NewReasonRubricSetting!
+}
+
+input NewScoreRubricSetting {
+	name: String!
+	ratio: Float!
+}
+
+input NewReasonRubricSetting {
+	type: ReasonRubricType!
+}
+
+input NewRubric {
+	programId: ID!
+	applicantId: ID!
+	# Null if not setup
+	scores: [Int!]
+	# Null if not setup
+	reason: String
+}
+
+input NewUser {
+	name: String!
+	email: String!
+	password: String!
+}
+
+type Query {
+	users: [User!]!  # for test
+
+    profile: Profile! @hasRole(role: USER)
+    openedPrograms: [Program!]! @hasRole(role: USER)
+    ownedPrograms: [Program!]! @hasRole(role: USER)  # for applicant, programMananger and reviewer
+    programForm(programId: ID!): ProgramForm! @hasRole(role: USER)
+    
+    appliedStatus: [AppliedStatus!]! @hasRole(role: APPLICANT)
+    appliedForm(programId: ID!): SubmittedForm! @hasRole(role: APPLICANT)
+    
+    programStatus(id: ID!): ProgramStatus! @hasRole(role: PROGRAMMANAGER)
+    programApplicants(programId: ID!): [User!]! @hasRole(role: PROGRAMMANAGER)
+    submittedForm(programId: ID!, userId: ID!): [SubmittedForm!] @hasRole(role: PROGRAMMANAGER)  # null if not setup
+    docReviewProgress: [ReviewProgress!] @hasRole(role: PROGRAMMANAGER)                          # null if not setup
+    docReviewResult(programId: ID!): ReviewResult @hasRole(role: PROGRAMMANAGER)                 # null if not setup
+    oralReviewProgress: [ReviewProgress!] @hasRole(role: PROGRAMMANAGER)                         # null if not setup
+    oralReviewResult(programId: ID!): ReviewResult @hasRole(role: PROGRAMMANAGER)                # null if not setup
+    
+    applicantsToDocReivew(programId: ID!): [User!]! @hasRole(role: REVIEWER)
+    applicantsToOralReivew(programId: ID!): [User!]! @hasRole(role: REVIEWER)
+    viewSubmmitedForm(programId: ID!, applicantId: ID!): SubmittedForm! @hasRole(role: REVIEWER)
+    
+    userCount: Int! @hasRole(role: ADMIN)
+    programManagerCount: Int! @hasRole(role: ADMIN)
+    reivewerCount: Int! @hasRole(role: ADMIN)
+}
+
+type Mutation {
+	createUser(input: NewUser!): User!  # for test
+
+    login(email: String!, password: String!): Void
+    register(input: NewRegister!): Void
+    forgotPassword(email: String!): Void
+    
+    updatePassword(oldPassword: String, newPassword: String!): Void @hasRole(role: USER)
+    resetPassword(newPassword: String!): Void @hasRole(role: USER)
+    updateProfile(input: NewProfile!): Void @hasRole(role: USER)
+    submitForm(data: NewSubmitForm!): Void @hasRole(role: APPLICANT)
+    
+    submitRecommendLetter(content: String!): Void  #TODO @auth recommendLetter
+    
+    createProgram(name: String!): ID! @hasRole(role: PROGRAMMANAGER)
+    buildForm(input: NewBuildForm!): Void @hasRole(role: PROGRAMMANAGER)
+    setupDocReview(input: NewReviewSetting!): Void @hasRole(role: PROGRAMMANAGER)
+    setupOralReview(input: NewReviewSetting!): Void @hasRole(role: PROGRAMMANAGER)
+    
+    saveDocRubric(input: NewRubric!): Void @hasRole(role: REVIEWER)
+    saveOralRubric(input: NewRubric!): Void @hasRole(role: REVIEWER)
+}
