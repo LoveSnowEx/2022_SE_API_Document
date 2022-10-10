@@ -1,365 +1,1732 @@
-<!DOCTYPE html>
-<html lang="en">
+<html><head><meta name="color-scheme" content="light dark"></head><body><link rel="stylesheet" type="text/css" href="chrome-extension://ckkdlimhmcjmikdlpkmbgfkaikojcbjk/themes/github.css" id="_theme"><div id="_html" class="markdown-body"><h1 id="api"><a class="anchor" name="api" href="#api"><span class="octicon octicon-link"></span></a>API</h1>
+<details>
+  <summary><strong>Table of Contents</strong></summary>
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="./styles/graphdoc.css" />
-    <title>Graphql schema documentation</title>
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet"><link type="text/css" rel="stylesheet" href="./assets/code.css" /><link type="text/css" rel="stylesheet" href="./assets/require-by.css" />
-</head>
-<body class="slds-scrollable--y">
-    <nav class="slds-grid slds-grid--vertical slds-col--rule-right">
-        <header class="slds-p-around--medium slds-col slds-shrik slds-grow-none">
-            <button class="slds-button slds-button--icon slds-float--right js-toggle-navigation less-than-medium">
-                <i class="material-icons">close</i>
-            </button>
-                <h3 class="slds-text-heading--medium"><a href="./">GraphQL Schema</a></h3>
-            <div class="slds-p-top--small">
-                <input id="type-search" type="text" placeholder="Search a type" autofocus="" class="slds-input" />
-            </div>
-        </header>
-        <div id="navication-scroll" class="slds-scrollable--y slds-col slds-grow">
-<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Schema</h4>
-    <ul>
-        <li  title="Query">
-            <a href="query.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Query
-            </a>
-        </li>
-        <li  title="Mutation">
-            <a href="mutation.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Mutation
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Scalars</h4>
-    <ul>
-        <li  title="Boolean">
-            <a href="boolean.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Boolean
-            </a>
-        </li>
-        <li  title="Float">
-            <a href="float.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Float
-            </a>
-        </li>
-        <li  title="ID">
-            <a href="id.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ID
-            </a>
-        </li>
-        <li  title="Int">
-            <a href="int.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Int
-            </a>
-        </li>
-        <li  title="String">
-            <a href="string.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                String
-            </a>
-        </li>
-        <li  title="Time">
-            <a href="time.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Time
-            </a>
-        </li>
-        <li  title="Upload">
-            <a href="upload.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Upload
-            </a>
-        </li>
-        <li  title="Void">
-            <a href="void.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Void
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Enums</h4>
-    <ul>
-        <li  title="AppliedStatusType">
-            <a href="appliedstatustype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AppliedStatusType
-            </a>
-        </li>
-        <li  title="FieldType">
-            <a href="fieldtype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                FieldType
-            </a>
-        </li>
-        <li  title="ReasonRubricType">
-            <a href="reasonrubrictype.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ReasonRubricType
-            </a>
-        </li>
-        <li  title="Role">
-            <a href="role.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Role
-            </a>
-        </li>
-        <li  title="__DirectiveLocation">
-            <a href="directivelocation.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __DirectiveLocation
-            </a>
-        </li>
-        <li  title="__TypeKind">
-            <a href="typekind.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __TypeKind
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Objects</h4>
-    <ul>
-        <li  title="AppliedStatus">
-            <a href="appliedstatus.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                AppliedStatus
-            </a>
-        </li>
-        <li  title="BasicField">
-            <a href="basicfield.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                BasicField
-            </a>
-        </li>
-        <li  title="Profile">
-            <a href="profile.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Profile
-            </a>
-        </li>
-        <li  title="Program">
-            <a href="program.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                Program
-            </a>
-        </li>
-        <li  title="ProgramForm">
-            <a href="programform.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ProgramForm
-            </a>
-        </li>
-        <li  title="ProgramStatus">
-            <a href="programstatus.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ProgramStatus
-            </a>
-        </li>
-        <li  title="ReviewProgress">
-            <a href="reviewprogress.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ReviewProgress
-            </a>
-        </li>
-        <li  title="ReviewResult">
-            <a href="reviewresult.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ReviewResult
-            </a>
-        </li>
-        <li  title="ReviewRubric">
-            <a href="reviewrubric.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                ReviewRubric
-            </a>
-        </li>
-        <li  title="SubmittedForm">
-            <a href="submittedform.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                SubmittedForm
-            </a>
-        </li>
-        <li  title="SubmittedRecommendLetter">
-            <a href="submittedrecommendletter.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                SubmittedRecommendLetter
-            </a>
-        </li>
-        <li  title="UploadField">
-            <a href="uploadfield.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                UploadField
-            </a>
-        </li>
-        <li  title="User">
-            <a href="user.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                User
-            </a>
-        </li>
-        <li  title="__Directive">
-            <a href="directive.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __Directive
-            </a>
-        </li>
-        <li  title="__EnumValue">
-            <a href="enumvalue.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __EnumValue
-            </a>
-        </li>
-        <li  title="__Field">
-            <a href="field.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __Field
-            </a>
-        </li>
-        <li  title="__InputValue">
-            <a href="inputvalue.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __InputValue
-            </a>
-        </li>
-        <li  title="__Schema">
-            <a href="schema.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __Schema
-            </a>
-        </li>
-        <li  title="__Type">
-            <a href="type.spec.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                __Type
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Input Objects</h4>
-    <ul>
-        <li  title="NewBasicField">
-            <a href="newbasicfield.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewBasicField
-            </a>
-        </li>
-        <li  title="NewBuildForm">
-            <a href="newbuildform.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewBuildForm
-            </a>
-        </li>
-        <li  title="NewProfile">
-            <a href="newprofile.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewProfile
-            </a>
-        </li>
-        <li  title="NewReasonRubricSetting">
-            <a href="newreasonrubricsetting.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewReasonRubricSetting
-            </a>
-        </li>
-        <li  title="NewRegister">
-            <a href="newregister.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewRegister
-            </a>
-        </li>
-        <li  title="NewReviewSetting">
-            <a href="newreviewsetting.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewReviewSetting
-            </a>
-        </li>
-        <li  title="NewRubric">
-            <a href="newrubric.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewRubric
-            </a>
-        </li>
-        <li  title="NewRubricSetting">
-            <a href="newrubricsetting.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewRubricSetting
-            </a>
-        </li>
-        <li  title="NewScoreRubricSetting">
-            <a href="newscorerubricsetting.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewScoreRubricSetting
-            </a>
-        </li>
-        <li  title="NewSubmitData">
-            <a href="newsubmitdata.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewSubmitData
-            </a>
-        </li>
-        <li  title="NewSubmitFile">
-            <a href="newsubmitfile.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewSubmitFile
-            </a>
-        </li>
-        <li  title="NewSubmitForm">
-            <a href="newsubmitform.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewSubmitForm
-            </a>
-        </li>
-        <li  title="NewSubmitRecommender">
-            <a href="newsubmitrecommender.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewSubmitRecommender
-            </a>
-        </li>
-        <li  title="NewUploadField">
-            <a href="newuploadfield.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewUploadField
-            </a>
-        </li>
-        <li  title="NewUser">
-            <a href="newuser.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                NewUser
-            </a>
-        </li>
-    </ul>
-</div>
-<div class="slds-grid slds-grid--vertical slds-navigation-list--vertical">
-    <h4 class="slds-text-title--caps slds-p-around--medium">Directives</h4>
-    <ul>
-        <li  title="deprecated">
-            <a href="deprecated.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                deprecated
-            </a>
-        </li>
-        <li  title="hasRole">
-            <a href="hasrole.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                hasRole
-            </a>
-        </li>
-        <li  title="include">
-            <a href="include.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                include
-            </a>
-        </li>
-        <li  title="skip">
-            <a href="skip.doc.html" class="slds-navigation-list--vertical__action slds-text-link--reset slds-truncate">
-                skip
-            </a>
-        </li>
-    </ul>
-</div>
-        </div>
-    </nav>
-    <main><section class="title slds-theme--inverse">
-    <div class="container slds-grid">
-        <div>
-        <button class="slds-button js-toggle-navigation less-than-medium">
-            <i class="material-icons slds-button__icon slds-button__icon--left">menu</i>
-            <span class="slds-text-title--caps">Types<span>
-        </button>
-        </div>
-        </div>
-    </div>
-    <div class="container">
-        
-        <h1 class="slds-text-heading--large">Graphql schema documentation</h1>
-        <div class="slds-text-body--regular"></div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <h2 id="graphql-schema-definition" class="graphdoc-section__title slds-text-heading--medium slds-m-top--small">
-            <a href="#graphql-schema-definition">
-                <i class="material-icons">link</i>
-            </a>
-            GraphQL Schema definition
-        </h2>
-        <code class="highlight"><ul class="code" style="padding-left:28px"><li><span class="keyword operator ts">schema</span> {</li><li></li><li><span class="tab"><span class="meta">query</span>: <a class="support type" href="query.doc.html">Query</a></span></li><li></li><li><span class="tab"><span class="meta">mutation</span>: <a class="support type" href="mutation.doc.html">Mutation</a></span></li><li>}</li></ul></code>
-    </div>
-</section>
-<footer>
-<div class="container slds-p-around--large">
-    <p class="slds-text-align--right slds-text-title--caps">
-        Generated with <a href="https://github.com/2fd/graphdoc#readme" target="_blank">graphdoc 2.4.0</a>
-    </p>
-</div>
-</footer>
-</main>
-    <script src="./scripts/focus-active.js"></script>
-    <script src="./scripts/filter-types.js"></script>
-    <script src="./scripts/toggle-navigation.js"></script>
-</body>
+<ul>
+<li><a href="#query">Query</a></li>
+<li><a href="#mutation">Mutation</a></li>
+<li><a href="#objects">Objects</a><ul>
+<li><a href="#appliedstatus">AppliedStatus</a></li>
+<li><a href="#basicfield">BasicField</a></li>
+<li><a href="#profile">Profile</a></li>
+<li><a href="#program">Program</a></li>
+<li><a href="#programform">ProgramForm</a></li>
+<li><a href="#programstatus">ProgramStatus</a></li>
+<li><a href="#reviewprogress">ReviewProgress</a></li>
+<li><a href="#reviewresult">ReviewResult</a></li>
+<li><a href="#reviewrubric">ReviewRubric</a></li>
+<li><a href="#submittedform">SubmittedForm</a></li>
+<li><a href="#submittedrecommendletter">SubmittedRecommendLetter</a></li>
+<li><a href="#uploadfield">UploadField</a></li>
+<li><a href="#user">User</a></li>
+</ul>
+</li>
+<li><a href="#inputs">Inputs</a><ul>
+<li><a href="#newbasicfield">NewBasicField</a></li>
+<li><a href="#newbuildform">NewBuildForm</a></li>
+<li><a href="#newprofile">NewProfile</a></li>
+<li><a href="#newreasonrubricsetting">NewReasonRubricSetting</a></li>
+<li><a href="#newregister">NewRegister</a></li>
+<li><a href="#newreviewsetting">NewReviewSetting</a></li>
+<li><a href="#newrubric">NewRubric</a></li>
+<li><a href="#newrubricsetting">NewRubricSetting</a></li>
+<li><a href="#newscorerubricsetting">NewScoreRubricSetting</a></li>
+<li><a href="#newsubmitdata">NewSubmitData</a></li>
+<li><a href="#newsubmitfile">NewSubmitFile</a></li>
+<li><a href="#newsubmitform">NewSubmitForm</a></li>
+<li><a href="#newsubmitrecommenderinfo">NewSubmitRecommenderInfo</a></li>
+<li><a href="#newuploadfield">NewUploadField</a></li>
+<li><a href="#newuser">NewUser</a></li>
+</ul>
+</li>
+<li><a href="#enums">Enums</a><ul>
+<li><a href="#appliedstatustype">AppliedStatusType</a></li>
+<li><a href="#fieldtype">FieldType</a></li>
+<li><a href="#reasonrubrictype">ReasonRubricType</a></li>
+<li><a href="#role">Role</a></li>
+</ul>
+</li>
+<li><a href="#scalars">Scalars</a><ul>
+<li><a href="#boolean">Boolean</a></li>
+<li><a href="#float">Float</a></li>
+<li><a href="#id">ID</a></li>
+<li><a href="#int">Int</a></li>
+<li><a href="#string">String</a></li>
+<li><a href="#time">Time</a></li>
+<li><a href="#upload">Upload</a></li>
+<li><a href="#void">Void</a></li>
+</ul>
+</li>
+</ul>
+</details>
+
+<h2 id="query"><a class="anchor" name="query" href="#query"><span class="octicon octicon-link"></span></a>Query</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>users</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td>
+
+<p>Get all users for testing</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>profile</strong></td>
+<td valign="top"><a href="#profile">Profile</a>!</td>
+<td>
+
+<p>Get user's profile</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>openedPrograms</strong></td>
+<td valign="top">[<a href="#program">Program</a>!]!</td>
+<td>
+
+<p>Get the programs opened now</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>ownedPrograms</strong></td>
+<td valign="top">[<a href="#program">Program</a>!]!</td>
+<td>
+
+<p>Get user's own programs, for role of applicant, program mananger and reviewer</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>programForm</strong></td>
+<td valign="top"><a href="#programform">ProgramForm</a></td>
+<td>
+
+<p>Get program form format, return null if program doesn't setup</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program ID</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>appliedStatus</strong></td>
+<td valign="top">[<a href="#appliedstatus">AppliedStatus</a>!]!</td>
+<td>
+
+<p>Get all staus of programs user applied</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>appliedForm</strong></td>
+<td valign="top"><a href="#submittedform">SubmittedForm</a>!</td>
+<td>
+
+<p>Get the form applicant submmited</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program user applied</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>programStatus</strong></td>
+<td valign="top"><a href="#programstatus">ProgramStatus</a>!</td>
+<td>
+
+<p>Check the status of the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">id</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>programApplicants</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td>
+
+<p>Get the applicants of the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>submittedForms</strong></td>
+<td valign="top">[<a href="#submittedform">SubmittedForm</a>!]</td>
+<td>
+
+<p>Get the form applicant submmited, return null if program doesn't setup</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">applicantId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docReviewProgress</strong></td>
+<td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
+<td>
+
+<p>Get the document review progress, return null if program doesn't setup</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docReviewResult</strong></td>
+<td valign="top"><a href="#reviewresult">ReviewResult</a></td>
+<td>
+
+<p>Get the document review result, return null if program doesn't setup</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralReviewProgress</strong></td>
+<td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
+<td>
+
+<p>Get the oral review progress, return null if program doesn't setup</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralReviewResult</strong></td>
+<td valign="top"><a href="#reviewresult">ReviewResult</a></td>
+<td>
+
+<p>Get the oral review result, return null if program doesn't setup</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>applicantsToDocReivew</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td>
+
+<p>Get the applicants with eligibility of document review in the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>applicantsToOralReivew</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td>
+
+<p>Get the applicants with eligibility of roal review in the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>viewSubmmitedForm</strong></td>
+<td valign="top"><a href="#submittedform">SubmittedForm</a>!</td>
+<td>
+
+<p>Get the form applicant submmited for review</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Program id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">applicantId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Applicant id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>userCount</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Get the count of all users</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>programManagerCount</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Get the count of all program managers</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reviewerCount</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Get the count of all reviewers</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="mutation"><a class="anchor" name="mutation" href="#mutation"><span class="octicon octicon-link"></span></a>Mutation</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>createUser</strong></td>
+<td valign="top"><a href="#user">User</a>!</td>
+<td>
+
+<p>Create user for testing</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newuser">NewUser</a>!</td>
+<td>
+
+<p>User to create</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>login</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Login user with email and password</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">email</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>User's eamil</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">password</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>User's password</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>register</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Register new user</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newregister">NewRegister</a>!</td>
+<td>
+
+<p>Register data for new user</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>forgotPassword</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Send email for reset password</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">email</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>User's eamil</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>resetPassword</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Reset user password</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">newPassword</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>New password to reset</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updatePassword</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Update user password with old password check</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">oldPassword</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>Old password</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">newPassword</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>New password</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updateProfile</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Update user's profile</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newprofile">NewProfile</a>!</td>
+<td>
+
+<p>New profile to update, null field won't be update</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>submitForm</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Applicant submit a form for apply to program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">data</td>
+<td valign="top"><a href="#newsubmitform">NewSubmitForm</a>!</td>
+<td>
+
+<p>New form to submit</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>submitRecommendLetter</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Recommender submit a letter for applicant</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">content</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>Letter content</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>createProgram</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>Create new program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">name</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>Name of the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>buildForm</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Build form for program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newbuildform">NewBuildForm</a>!</td>
+<td>
+
+<p>Form to build</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>setupDocReview</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Set up program document review setting</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newreviewsetting">NewReviewSetting</a>!</td>
+<td>
+
+<p>Setting to apply to the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>setupOralReview</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Set up program oral review setting</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newreviewsetting">NewReviewSetting</a>!</td>
+<td>
+
+<p>Setting to apply to the program</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>saveDocRubric</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Save a document rubric for applicant by reviewer</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newrubric">NewRubric</a>!</td>
+<td>
+
+<p>Rubric for applicant</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>saveOralRubric</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+<p>Save a oral rubric for applicant by reviewer</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newrubric">NewRubric</a>!</td>
+<td>
+
+<p>Rubric for applicant</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="objects"><a class="anchor" name="objects" href="#objects"><span class="octicon octicon-link"></span></a>Objects</h2>
+<h3 id="appliedstatus"><a class="anchor" name="appliedstatus" href="#appliedstatus"><span class="octicon octicon-link"></span></a>AppliedStatus</h3>
+<p>Status of the program user applied</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>programName</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>status</strong></td>
+<td valign="top"><a href="#appliedstatustype">AppliedStatusType</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommendLetter</strong></td>
+<td valign="top">[<a href="#boolean">Boolean</a>!]!</td>
+<td>
+
+<p>Return an empty array if no letter to write</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="basicfield"><a class="anchor" name="basicfield" href="#basicfield"><span class="octicon octicon-link"></span></a>BasicField</h3>
+<p>Form basic field format</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>required</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#fieldtype">FieldType</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="profile"><a class="anchor" name="profile" href="#profile"><span class="octicon octicon-link"></span></a>Profile</h3>
+<p>User profile</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>role</strong></td>
+<td valign="top"><a href="#role">Role</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>idNumber</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>birthday</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>telephone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>cellphone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>address</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>school</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="program"><a class="anchor" name="program" href="#program"><span class="octicon octicon-link"></span></a>Program</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>openAt</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>closeAt</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="programform"><a class="anchor" name="programform" href="#programform"><span class="octicon octicon-link"></span></a>ProgramForm</h3>
+<p>Program form format</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>basic</strong></td>
+<td valign="top">[<a href="#basicfield">BasicField</a>!]!</td>
+<td>
+
+<p>Basic field like name, email and phone, etc.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>upload</strong></td>
+<td valign="top">[<a href="#uploadfield">UploadField</a>!]!</td>
+<td>
+
+<p>Upload field for files upload</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommendLetterNumber</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Num of recommend letters</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="programstatus"><a class="anchor" name="programstatus" href="#programstatus"><span class="octicon octicon-link"></span></a>ProgramStatus</h3>
+<p>Status of the program</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>formBuilded</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docSetup</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralSetup</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="reviewprogress"><a class="anchor" name="reviewprogress" href="#reviewprogress"><span class="octicon octicon-link"></span></a>ReviewProgress</h3>
+<p>Review progress of a reviewer</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>reviewer</strong></td>
+<td valign="top"><a href="#user">User</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>done</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Num of the reviewer has reviewed</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>total</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Num of the reviewer to reviewed</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="reviewresult"><a class="anchor" name="reviewresult" href="#reviewresult"><span class="octicon octicon-link"></span></a>ReviewResult</h3>
+<p>Results reviewers made for applicants</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>applicants</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reviewers</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>rubrics</strong></td>
+<td valign="top">[<a href="#reviewrubric">ReviewRubric</a>!]!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="reviewrubric"><a class="anchor" name="reviewrubric" href="#reviewrubric"><span class="octicon octicon-link"></span></a>ReviewRubric</h3>
+<p>Scores and reason reviewer made for an applicant</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>applicant</strong></td>
+<td valign="top"><a href="#user">User</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reviewer</strong></td>
+<td valign="top"><a href="#user">User</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>scores</strong></td>
+<td valign="top">[<a href="#int">Int</a>!]</td>
+<td>
+
+<p>Null if the program doesn't setup score rubric</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>total</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td>
+
+<p>Null if the program doesn't setup score rubric</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reason</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+<p>Null if the program doesn't setup reason rubric</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="submittedform"><a class="anchor" name="submittedform" href="#submittedform"><span class="octicon octicon-link"></span></a>SubmittedForm</h3>
+<p>Form applicant submitted</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>basic</strong></td>
+<td valign="top">[<a href="#string">String</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>uploads</strong></td>
+<td valign="top">[<a href="#string">String</a>!]!</td>
+<td>
+
+<p>Url to file</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommendLetters</strong></td>
+<td valign="top">[<a href="#submittedrecommendletter">SubmittedRecommendLetter</a>!]!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="submittedrecommendletter"><a class="anchor" name="submittedrecommendletter" href="#submittedrecommendletter"><span class="octicon octicon-link"></span></a>SubmittedRecommendLetter</h3>
+<p>Recommend letter of applicant</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>recommenderName</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>phone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>organization</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>content</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="uploadfield"><a class="anchor" name="uploadfield" href="#uploadfield"><span class="octicon octicon-link"></span></a>UploadField</h3>
+<p>Form upload field format</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>required</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="user"><a class="anchor" name="user" href="#user"><span class="octicon octicon-link"></span></a>User</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+<p>User id</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>Name of user</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>Email of user</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="inputs"><a class="anchor" name="inputs" href="#inputs"><span class="octicon octicon-link"></span></a>Inputs</h2>
+<h3 id="newbasicfield"><a class="anchor" name="newbasicfield" href="#newbasicfield"><span class="octicon octicon-link"></span></a>NewBasicField</h3>
+<p>Basic field for form building</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>required</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#fieldtype">FieldType</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newbuildform"><a class="anchor" name="newbuildform" href="#newbuildform"><span class="octicon octicon-link"></span></a>NewBuildForm</h3>
+<p>Form building for program</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>programId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>basic</strong></td>
+<td valign="top">[<a href="#newbasicfield">NewBasicField</a>!]!</td>
+<td>
+
+<p>Basic field like name, email and phone, etc.</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>uploads</strong></td>
+<td valign="top">[<a href="#newuploadfield">NewUploadField</a>!]!</td>
+<td>
+
+<p>Upload field for files upload</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommendLetterNumber</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td>
+
+<p>Num of recommend letters</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>openAt</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td>
+
+<p>Date of the program open at</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>closeAt</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td>
+
+<p>Date of the program close at</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newprofile"><a class="anchor" name="newprofile" href="#newprofile"><span class="octicon octicon-link"></span></a>NewProfile</h3>
+<p>For register and update, keep field null for not to update</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>idNumber</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>birthday</strong></td>
+<td valign="top"><a href="#time">Time</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>telephone</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>cellphone</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>address</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>school</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newreasonrubricsetting"><a class="anchor" name="newreasonrubricsetting" href="#newreasonrubricsetting"><span class="octicon octicon-link"></span></a>NewReasonRubricSetting</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#reasonrubrictype">ReasonRubricType</a>!</td>
+<td>
+
+<p>Reason rubric type</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newregister"><a class="anchor" name="newregister" href="#newregister"><span class="octicon octicon-link"></span></a>NewRegister</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>password</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>profile</strong></td>
+<td valign="top"><a href="#newprofile">NewProfile</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newreviewsetting"><a class="anchor" name="newreviewsetting" href="#newreviewsetting"><span class="octicon octicon-link"></span></a>NewReviewSetting</h3>
+<p>Review settings for program</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>programId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>rubric</strong></td>
+<td valign="top"><a href="#newrubricsetting">NewRubricSetting</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>applicantIds</strong></td>
+<td valign="top">[<a href="#id">ID</a>!]!</td>
+<td>
+
+<p>This array is used to store the review order of the applicants</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reviewerIds</strong></td>
+<td valign="top">[<a href="#id">ID</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>distribution</strong></td>
+<td valign="top">[[<a href="#boolean">Boolean</a>!]!]!</td>
+<td>
+
+<p><code>Distribution[i][j] == true</code> mean <code>applicants[i]</code> is asigned to <code>reviewers[j]</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newrubric"><a class="anchor" name="newrubric" href="#newrubric"><span class="octicon octicon-link"></span></a>NewRubric</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>programId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>applicantId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>scores</strong></td>
+<td valign="top">[<a href="#int">Int</a>!]</td>
+<td>
+
+<p>Null if the program doesn't setup score rubric</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reason</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+<p>Null if the program doesn't setup reason rubric</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newrubricsetting"><a class="anchor" name="newrubricsetting" href="#newrubricsetting"><span class="octicon octicon-link"></span></a>NewRubricSetting</h3>
+<p>Rubric settings for program</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>score</strong></td>
+<td valign="top">[<a href="#newscorerubricsetting">NewScoreRubricSetting</a>!]</td>
+<td>
+
+<p>Null if the program doesn't setup score rubric</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reason</strong></td>
+<td valign="top"><a href="#newreasonrubricsetting">NewReasonRubricSetting</a></td>
+<td>
+
+<p>Null if the program doesn't setup reason rubric</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newscorerubricsetting"><a class="anchor" name="newscorerubricsetting" href="#newscorerubricsetting"><span class="octicon octicon-link"></span></a>NewScoreRubricSetting</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+<p>Score rubric name</p>
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>ratio</strong></td>
+<td valign="top"><a href="#float">Float</a>!</td>
+<td>
+
+<p>Score rubric ratio</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newsubmitdata"><a class="anchor" name="newsubmitdata" href="#newsubmitdata"><span class="octicon octicon-link"></span></a>NewSubmitData</h3>
+<p>Basic field</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>formFieldId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>value</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newsubmitfile"><a class="anchor" name="newsubmitfile" href="#newsubmitfile"><span class="octicon octicon-link"></span></a>NewSubmitFile</h3>
+<p>Upload field</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>formFieldId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>value</strong></td>
+<td valign="top"><a href="#upload">Upload</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newsubmitform"><a class="anchor" name="newsubmitform" href="#newsubmitform"><span class="octicon octicon-link"></span></a>NewSubmitForm</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>programId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>applicantId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>data</strong></td>
+<td valign="top">[<a href="#newsubmitdata">NewSubmitData</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>files</strong></td>
+<td valign="top">[<a href="#newsubmitfile">NewSubmitFile</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommender</strong></td>
+<td valign="top">[<a href="#newsubmitrecommenderinfo">NewSubmitRecommenderInfo</a>!]!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newsubmitrecommenderinfo"><a class="anchor" name="newsubmitrecommenderinfo" href="#newsubmitrecommenderinfo"><span class="octicon octicon-link"></span></a>NewSubmitRecommenderInfo</h3>
+<p>Recommender info</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>phone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>organization</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newuploadfield"><a class="anchor" name="newuploadfield" href="#newuploadfield"><span class="octicon octicon-link"></span></a>NewUploadField</h3>
+<p>Upload field for form building</p>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>required</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="newuser"><a class="anchor" name="newuser" href="#newuser"><span class="octicon octicon-link"></span></a>NewUser</h3>
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>password</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="enums"><a class="anchor" name="enums" href="#enums"><span class="octicon octicon-link"></span></a>Enums</h2>
+<h3 id="appliedstatustype"><a class="anchor" name="appliedstatustype" href="#appliedstatustype"><span class="octicon octicon-link"></span></a>AppliedStatusType</h3>
+<p>Status type of the program user applied</p>
+<table>
+<thead>
+<tr><th align="left">Value</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td valign="top"><strong>APPLIED</strong></td>
+<td>
+
+<p>Applied but not yet determined eligibility</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>ACCEPTED</strong></td>
+<td></td>
+</tr>
+<tr>
+<td valign="top"><strong>REJECTED</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="fieldtype"><a class="anchor" name="fieldtype" href="#fieldtype"><span class="octicon octicon-link"></span></a>FieldType</h3>
+<p>Form field input type</p>
+<table>
+<thead>
+<tr><th align="left">Value</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td valign="top"><strong>DEFAULT</strong></td>
+<td>
+
+<p>Default text field</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>NUMBER</strong></td>
+<td>
+
+<p>Number field</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>EMAIL</strong></td>
+<td>
+
+<p>Email field</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="reasonrubrictype"><a class="anchor" name="reasonrubrictype" href="#reasonrubrictype"><span class="octicon octicon-link"></span></a>ReasonRubricType</h3>
+<p>Type of reason rubric</p>
+<table>
+<thead>
+<tr><th align="left">Value</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td valign="top"><strong>NONE</strong></td>
+<td>
+
+<p>No reason for rubric</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>RECOMMENDATION</strong></td>
+<td>
+
+<p>Used for teacher selection</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>DIRECTADMISSION</strong></td>
+<td>
+
+<p>Used for undergraduate special achievement , graduate and doctoral admission</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="role"><a class="anchor" name="role" href="#role"><span class="octicon octicon-link"></span></a>Role</h3>
+<p>Role of user</p>
+<table>
+<thead>
+<tr><th align="left">Value</th>
+<th align="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td valign="top"><strong>USER</strong></td>
+<td>
+
+<p>All users</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>ADMIN</strong></td>
+<td>
+
+<p>System administrators. Responsible for the maintenance, configuration, and reliable operation of system</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>PROGRAMMANAGER</strong></td>
+<td>
+
+<p>Program managers. Responsible for management of program like creation, modification and deletion</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>REVIEWER</strong></td>
+<td>
+
+<p>Reviewers. Responsible for applicant document and oral review</p>
+</td>
+</tr>
+<tr>
+<td valign="top"><strong>APPLICANT</strong></td>
+<td>
+
+<p>Applicants. The person submit form for reviewing</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="scalars"><a class="anchor" name="scalars" href="#scalars"><span class="octicon octicon-link"></span></a>Scalars</h2>
+<h3 id="boolean"><a class="anchor" name="boolean" href="#boolean"><span class="octicon octicon-link"></span></a>Boolean</h3>
+<p>The <code>Boolean</code> scalar type represents <code>true</code> or <code>false</code>.</p>
+<h3 id="float"><a class="anchor" name="float" href="#float"><span class="octicon octicon-link"></span></a>Float</h3>
+<p>The <code>Float</code> scalar type represents signed double-precision fractional values as specified by <a href="https://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754</a>.</p>
+<h3 id="id"><a class="anchor" name="id" href="#id"><span class="octicon octicon-link"></span></a>ID</h3>
+<p>The <code>ID</code> scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as <code>"4"</code>) or integer (such as <code>4</code>) input value will be accepted as an ID.</p>
+<h3 id="int"><a class="anchor" name="int" href="#int"><span class="octicon octicon-link"></span></a>Int</h3>
+<p>The <code>Int</code> scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.</p>
+<h3 id="string"><a class="anchor" name="string" href="#string"><span class="octicon octicon-link"></span></a>String</h3>
+<p>The <code>String</code> scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.</p>
+<h3 id="time"><a class="anchor" name="time" href="#time"><span class="octicon octicon-link"></span></a>Time</h3>
+<p>The <code>Time</code> scalar type represents time in RFC3339Nano format</p>
+<h3 id="upload"><a class="anchor" name="upload" href="#upload"><span class="octicon octicon-link"></span></a>Upload</h3>
+<p>The <code>Upload</code> scalar type represents file data that can be uploaded</p>
+<h3 id="void"><a class="anchor" name="void" href="#void"><span class="octicon octicon-link"></span></a>Void</h3>
+<p>The <code>Void</code> scalar type represents null value, it shoud always be null</p>
+</div></body></html>
