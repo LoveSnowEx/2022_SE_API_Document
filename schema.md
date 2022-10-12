@@ -429,6 +429,15 @@ Register data for new user
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>verifyRegister</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+Verify register of user
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>forgotPassword</strong></td>
 <td valign="top"><a href="#void">Void</a></td>
 <td>
@@ -533,6 +542,24 @@ New form to submit
 <td>
 
 Recommender submit a letter for applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">applicantId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Applicant id
 
 </td>
 </tr>
