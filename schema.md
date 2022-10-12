@@ -6,8 +6,10 @@
   * [Query](#query)
   * [Mutation](#mutation)
   * [Objects](#objects)
+    * [Applicant](#applicant)
     * [AppliedStatus](#appliedstatus)
     * [BasicField](#basicfield)
+    * [FinalReviewResult](#finalreviewresult)
     * [Profile](#profile)
     * [Program](#program)
     * [ProgramForm](#programform)
@@ -15,6 +17,7 @@
     * [ReviewProgress](#reviewprogress)
     * [ReviewResult](#reviewresult)
     * [ReviewRubric](#reviewrubric)
+    * [Reviewer](#reviewer)
     * [SubmittedForm](#submittedform)
     * [SubmittedRecommendLetter](#submittedrecommendletter)
     * [UploadField](#uploadfield)
@@ -33,6 +36,8 @@
     * [NewSubmitFile](#newsubmitfile)
     * [NewSubmitForm](#newsubmitform)
     * [NewSubmitRecommenderInfo](#newsubmitrecommenderinfo)
+    * [NewUpdateSubmittedForm](#newupdatesubmittedform)
+    * [NewUpdateUser](#newupdateuser)
     * [NewUploadField](#newuploadfield)
     * [NewUser](#newuser)
   * [Enums](#enums)
@@ -64,17 +69,8 @@
 </thead>
 <tbody>
 <tr>
-<td colspan="2" valign="top"><strong>users</strong></td>
-<td valign="top">[<a href="#user">User</a>!]!</td>
-<td>
-
-Get all users for testing
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>profile</strong></td>
-<td valign="top"><a href="#profile">Profile</a>!</td>
+<td colspan="2" valign="top"><strong>self</strong></td>
+<td valign="top"><a href="#user">User</a>!</td>
 <td>
 
 Get user's profile
@@ -95,214 +91,16 @@ Get the programs opened now
 <td valign="top">[<a href="#program">Program</a>!]!</td>
 <td>
 
-Get user's own programs, for role of applicant, program mananger and reviewer
+Get user's own programs, according to role of user
 
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>programForm</strong></td>
-<td valign="top"><a href="#programform">ProgramForm</a></td>
-<td>
-
-Get program form format, return null if program doesn't setup
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program ID
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>appliedStatus</strong></td>
-<td valign="top">[<a href="#appliedstatus">AppliedStatus</a>!]!</td>
-<td>
-
-Get all staus of programs user applied
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>appliedForm</strong></td>
+<td colspan="2" valign="top"><strong>submittedForm</strong></td>
 <td valign="top"><a href="#submittedform">SubmittedForm</a>!</td>
 <td>
 
-Get the form applicant submmited
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program user applied
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>programStatus</strong></td>
-<td valign="top"><a href="#programstatus">ProgramStatus</a>!</td>
-<td>
-
-Check the status of the program
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">id</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>programApplicants</strong></td>
-<td valign="top">[<a href="#user">User</a>!]!</td>
-<td>
-
-Get the applicants of the program
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>submittedForms</strong></td>
-<td valign="top">[<a href="#submittedform">SubmittedForm</a>!]</td>
-<td>
-
-Get the form applicant submmited, return null if program doesn't setup
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">applicantId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>docReviewProgress</strong></td>
-<td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
-<td>
-
-Get the document review progress, return null if program doesn't setup
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>docReviewResult</strong></td>
-<td valign="top"><a href="#reviewresult">ReviewResult</a></td>
-<td>
-
-Get the document review result, return null if program doesn't setup
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>oralReviewProgress</strong></td>
-<td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
-<td>
-
-Get the oral review progress, return null if program doesn't setup
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>oralReviewResult</strong></td>
-<td valign="top"><a href="#reviewresult">ReviewResult</a></td>
-<td>
-
-Get the oral review result, return null if program doesn't setup
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>applicantsToDocReivew</strong></td>
-<td valign="top">[<a href="#user">User</a>!]!</td>
-<td>
-
-Get the applicants with eligibility of document review in the program
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>applicantsToOralReivew</strong></td>
-<td valign="top">[<a href="#user">User</a>!]!</td>
-<td>
-
-Get the applicants with eligibility of roal review in the program
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">programId</td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-Program id
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>viewSubmmitedForm</strong></td>
-<td valign="top"><a href="#submittedform">SubmittedForm</a>!</td>
-<td>
-
-Get the form applicant submmited for review
+Get the form data applicant submmited
 
 </td>
 </tr>
@@ -321,6 +119,213 @@ Program id
 <td>
 
 Applicant id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>appliedStatus</strong></td>
+<td valign="top">[<a href="#appliedstatus">AppliedStatus</a>!]!</td>
+<td>
+
+Get applicant applied status
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>programStatus</strong></td>
+<td valign="top"><a href="#programstatus">ProgramStatus</a>!</td>
+<td>
+
+Check the status of the program
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reviewers</strong></td>
+<td valign="top">[<a href="#reviewer">Reviewer</a>!]!</td>
+<td>
+
+Get all reviewers in system
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>appliedApplicants</strong></td>
+<td valign="top">[<a href="#applicant">Applicant</a>!]!</td>
+<td>
+
+Get the applicants of the program
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docReivewApplicants</strong></td>
+<td valign="top">[<a href="#applicant">Applicant</a>!]!</td>
+<td>
+
+Get the applicants with eligibility of document review in the program, sort by review order
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralReivewApplicants</strong></td>
+<td valign="top">[<a href="#applicant">Applicant</a>!]!</td>
+<td>
+
+Get the applicants with eligibility of oral review in the program, sort by review order
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docReviewProgress</strong></td>
+<td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
+<td>
+
+Get the document review progress, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralReviewProgress</strong></td>
+<td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
+<td>
+
+Get the oral review progress, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docReviewResults</strong></td>
+<td valign="top">[<a href="#reviewresult">ReviewResult</a>!]</td>
+<td>
+
+Get the document review result, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralReviewResults</strong></td>
+<td valign="top">[<a href="#reviewresult">ReviewResult</a>!]</td>
+<td>
+
+Get the oral review result, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>finalReviewResults</strong></td>
+<td valign="top">[<a href="#finalreviewresult">FinalReviewResult</a>!]</td>
+<td>
+
+Get the final review result, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docReviewRubrics</strong></td>
+<td valign="top">[<a href="#reviewrubric">ReviewRubric</a>!]</td>
+<td>
+
+Get the doc review rubrics the reviewer made, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralReviewRubrics</strong></td>
+<td valign="top">[<a href="#reviewrubric">ReviewRubric</a>!]</td>
+<td>
+
+Get the oral review rubrics the reviewer made, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>users</strong></td>
+<td valign="top">[<a href="#user">User</a>!]!</td>
+<td>
+
+Get all users
 
 </td>
 </tr>
@@ -365,24 +370,6 @@ Get the count of all reviewers
 </tr>
 </thead>
 <tbody>
-<tr>
-<td colspan="2" valign="top"><strong>createUser</strong></td>
-<td valign="top"><a href="#user">User</a>!</td>
-<td>
-
-Create user for testing
-
-</td>
-</tr>
-<tr>
-<td colspan="2" align="right" valign="top">input</td>
-<td valign="top"><a href="#newuser">NewUser</a>!</td>
-<td>
-
-User to create
-
-</td>
-</tr>
 <tr>
 <td colspan="2" valign="top"><strong>login</strong></td>
 <td valign="top"><a href="#void">Void</a></td>
@@ -478,7 +465,7 @@ New password to reset
 <td valign="top"><a href="#void">Void</a></td>
 <td>
 
-Update user password with old password check
+Update user's password with old password check
 
 </td>
 </tr>
@@ -515,6 +502,24 @@ Update user's profile
 <td>
 
 New profile to update, null field won't be update
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updateSubmittedForm</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+Applicant or program manager update a submitted form
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">data</td>
+<td valign="top"><a href="#newupdatesubmittedform">NewUpdateSubmittedForm</a>!</td>
+<td>
+
+New update form
 
 </td>
 </tr>
@@ -680,14 +685,110 @@ Rubric for applicant
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>createUser</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+Create user
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newuser">NewUser</a>!</td>
+<td>
+
+User to create
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updateUser</strong></td>
+<td valign="top"><a href="#void">Void</a>!</td>
+<td>
+
+Update user
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">input</td>
+<td valign="top"><a href="#newupdateuser">NewUpdateUser</a>!</td>
+<td>
+
+User to update
+
+</td>
+</tr>
 </tbody>
 </table>
 
 ## Objects
 
+### Applicant
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+User id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Name of applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>phone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Phone of applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Email of applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>school</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+School of applicant
+
+</td>
+</tr>
+</tbody>
+</table>
+
 ### AppliedStatus
 
-Status of the program user applied
+Status of the program applicant applied
 
 <table>
 <thead>
@@ -749,6 +850,55 @@ Form basic field format
 <td colspan="2" valign="top"><strong>type</strong></td>
 <td valign="top"><a href="#fieldtype">FieldType</a>!</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+
+### FinalReviewResult
+
+Final results for applicants
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>applicant</strong></td>
+<td valign="top"><a href="#applicant">Applicant</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>scores</strong></td>
+<td valign="top">[<a href="#int">Int</a>!]</td>
+<td>
+
+Null if the program doesn't setup score rubric
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>average</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td>
+
+Null if the program doesn't setup score rubric
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reason</strong></td>
+<td valign="top">[<a href="#string">String</a>!]</td>
+<td>
+
+Null if the program doesn't setup reason rubric
+
+</td>
 </tr>
 </tbody>
 </table>
@@ -828,14 +978,13 @@ User profile
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>openAt</strong></td>
-<td valign="top"><a href="#time">Time</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>closeAt</strong></td>
-<td valign="top"><a href="#time">Time</a>!</td>
-<td></td>
+<td colspan="2" valign="top"><strong>form</strong></td>
+<td valign="top"><a href="#programform">ProgramForm</a></td>
+<td>
+
+Form format of the program, null if the program doesn't setup
+
+</td>
 </tr>
 </tbody>
 </table>
@@ -878,6 +1027,24 @@ Upload field for files upload
 <td>
 
 Num of recommend letters
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>openAt</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td>
+
+Date of the form start to accept submission
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>closeAt</strong></td>
+<td valign="top"><a href="#time">Time</a>!</td>
+<td>
+
+Date of the form end to accept submission
 
 </td>
 </tr>
@@ -958,7 +1125,7 @@ Num of the reviewer to reviewed
 
 ### ReviewResult
 
-Results reviewers made for applicants
+Result reviewers made for applicants
 
 <table>
 <thead>
@@ -971,19 +1138,36 @@ Results reviewers made for applicants
 </thead>
 <tbody>
 <tr>
-<td colspan="2" valign="top"><strong>applicants</strong></td>
-<td valign="top">[<a href="#user">User</a>!]!</td>
+<td colspan="2" valign="top"><strong>applicant</strong></td>
+<td valign="top"><a href="#applicant">Applicant</a>!</td>
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>reviewers</strong></td>
-<td valign="top">[<a href="#user">User</a>!]!</td>
-<td></td>
+<td colspan="2" valign="top"><strong>scores</strong></td>
+<td valign="top">[<a href="#int">Int</a>!]</td>
+<td>
+
+Null if the program doesn't setup score rubric
+
+</td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>rubrics</strong></td>
-<td valign="top">[<a href="#reviewrubric">ReviewRubric</a>!]!</td>
-<td></td>
+<td colspan="2" valign="top"><strong>average</strong></td>
+<td valign="top"><a href="#int">Int</a></td>
+<td>
+
+Null if the program doesn't setup score rubric
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reason</strong></td>
+<td valign="top">[<a href="#string">String</a>!]</td>
+<td>
+
+Null if the program doesn't setup reason rubric
+
+</td>
 </tr>
 </tbody>
 </table>
@@ -1004,12 +1188,7 @@ Scores and reason reviewer made for an applicant
 <tbody>
 <tr>
 <td colspan="2" valign="top"><strong>applicant</strong></td>
-<td valign="top"><a href="#user">User</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>reviewer</strong></td>
-<td valign="top"><a href="#user">User</a>!</td>
+<td valign="top"><a href="#applicant">Applicant</a>!</td>
 <td></td>
 </tr>
 <tr>
@@ -1036,6 +1215,57 @@ Null if the program doesn't setup score rubric
 <td>
 
 Null if the program doesn't setup reason rubric
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### Reviewer
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+User id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Name of applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>phone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Phone of applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Email of applicant
 
 </td>
 </tr>
@@ -1186,6 +1416,15 @@ Email of user
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>profile</strong></td>
+<td valign="top"><a href="#profile">Profile</a>!</td>
+<td>
+
+Profile of user
+
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -1272,7 +1511,7 @@ Num of recommend letters
 <td valign="top"><a href="#time">Time</a>!</td>
 <td>
 
-Date of the program open at
+Date of the form open at
 
 </td>
 </tr>
@@ -1281,7 +1520,7 @@ Date of the program open at
 <td valign="top"><a href="#time">Time</a>!</td>
 <td>
 
-Date of the program close at
+Date of the form close at
 
 </td>
 </tr>
@@ -1301,11 +1540,6 @@ For register and update, keep field null for not to update
 </tr>
 </thead>
 <tbody>
-<tr>
-<td colspan="2" valign="top"><strong>name</strong></td>
-<td valign="top"><a href="#string">String</a></td>
-<td></td>
-</tr>
 <tr>
 <td colspan="2" valign="top"><strong>idNumber</strong></td>
 <td valign="top"><a href="#string">String</a></td>
@@ -1622,11 +1856,6 @@ Upload field
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>applicantId</strong></td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td></td>
-</tr>
-<tr>
 <td colspan="2" valign="top"><strong>data</strong></td>
 <td valign="top">[<a href="#newsubmitdata">NewSubmitData</a>!]!</td>
 <td></td>
@@ -1680,6 +1909,74 @@ Recommender info
 </tbody>
 </table>
 
+### NewUpdateSubmittedForm
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>programId</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>data</strong></td>
+<td valign="top">[<a href="#newsubmitdata">NewSubmitData</a>!]!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>files</strong></td>
+<td valign="top">[<a href="#newsubmitfile">NewSubmitFile</a>!]!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### NewUpdateUser
+
+<table>
+<thead>
+<tr>
+<th colspan="2" align="left">Field</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>id</strong></td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>password</strong></td>
+<td valign="top"><a href="#string">String</a></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>profile</strong></td>
+<td valign="top"><a href="#newprofile">NewProfile</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
 ### NewUploadField
 
 Upload field for form building
@@ -1718,6 +2015,11 @@ Upload field for form building
 </thead>
 <tbody>
 <tr>
+<td colspan="2" valign="top"><strong>role</strong></td>
+<td valign="top"><a href="#role">Role</a>!</td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>name</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
 <td></td>
@@ -1730,6 +2032,11 @@ Upload field for form building
 <tr>
 <td colspan="2" valign="top"><strong>password</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>profile</strong></td>
+<td valign="top"><a href="#newprofile">NewProfile</a>!</td>
 <td></td>
 </tr>
 </tbody>
