@@ -50,6 +50,7 @@
     * [Float](#float)
     * [ID](#id)
     * [Int](#int)
+    * [Map](#map)
     * [String](#string)
     * [Time](#time)
     * [Upload](#upload)
@@ -73,7 +74,7 @@
 <td valign="top"><a href="#user">User</a>!</td>
 <td>
 
-Get user's profile
+Get user's self information
 
 </td>
 </tr>
@@ -851,6 +852,15 @@ Form basic field format
 <td valign="top"><a href="#fieldtype">FieldType</a>!</td>
 <td></td>
 </tr>
+<tr>
+<td colspan="2" valign="top"><strong>attributes</strong></td>
+<td valign="top"><a href="#map">Map</a>!</td>
+<td>
+
+Custom attributes
+
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -1457,6 +1467,15 @@ Basic field for form building
 <td colspan="2" valign="top"><strong>type</strong></td>
 <td valign="top"><a href="#fieldtype">FieldType</a>!</td>
 <td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>attributes</strong></td>
+<td valign="top"><a href="#map">Map</a>!</td>
+<td>
+
+Custom attributes
+
+</td>
 </tr>
 </tbody>
 </table>
@@ -2217,6 +2236,10 @@ The `ID` scalar type represents a unique identifier, often used to refetch an ob
 ### Int
 
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+
+### Map
+
+The `Map` scalar type represents json data that can be put custom properties in
 
 ### String
 
