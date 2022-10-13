@@ -32,8 +32,6 @@
     * [NewRubric](#newrubric)
     * [NewRubricSetting](#newrubricsetting)
     * [NewScoreRubricSetting](#newscorerubricsetting)
-    * [NewSubmitData](#newsubmitdata)
-    * [NewSubmitFile](#newsubmitfile)
     * [NewSubmitForm](#newsubmitform)
     * [NewSubmitRecommenderInfo](#newsubmitrecommenderinfo)
     * [NewUpdateSubmittedForm](#newupdatesubmittedform)
@@ -101,7 +99,7 @@ Get user's own programs, according to role of user
 <td valign="top"><a href="#submittedform">SubmittedForm</a>!</td>
 <td>
 
-Get the form data applicant submmited
+Get the form data applicant submited
 
 </td>
 </tr>
@@ -1023,7 +1021,7 @@ Basic field like name, email and phone, etc.
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>upload</strong></td>
+<td colspan="2" valign="top"><strong>uploads</strong></td>
 <td valign="top">[<a href="#uploadfield">UploadField</a>!]!</td>
 <td>
 
@@ -1302,7 +1300,7 @@ Form applicant submitted
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>uploads</strong></td>
+<td colspan="2" valign="top"><strong>files</strong></td>
 <td valign="top">[<a href="#string">String</a>!]!</td>
 <td>
 
@@ -1806,58 +1804,6 @@ Score rubric ratio
 </tbody>
 </table>
 
-### NewSubmitData
-
-Basic field
-
-<table>
-<thead>
-<tr>
-<th colspan="2" align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>formFieldId</strong></td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>value</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-### NewSubmitFile
-
-Upload field
-
-<table>
-<thead>
-<tr>
-<th colspan="2" align="left">Field</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>formFieldId</strong></td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>value</strong></td>
-<td valign="top"><a href="#upload">Upload</a>!</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
 ### NewSubmitForm
 
 <table>
@@ -1875,18 +1821,18 @@ Upload field
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>data</strong></td>
-<td valign="top">[<a href="#newsubmitdata">NewSubmitData</a>!]!</td>
+<td colspan="2" valign="top"><strong>basic</strong></td>
+<td valign="top">[<a href="#string">String</a>]!</td>
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>files</strong></td>
-<td valign="top">[<a href="#newsubmitfile">NewSubmitFile</a>!]!</td>
+<td colspan="2" valign="top"><strong>uploads</strong></td>
+<td valign="top">[<a href="#upload">Upload</a>]!</td>
 <td></td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>recommender</strong></td>
-<td valign="top">[<a href="#newsubmitrecommenderinfo">NewSubmitRecommenderInfo</a>!]!</td>
+<td valign="top">[<a href="#newsubmitrecommenderinfo">NewSubmitRecommenderInfo</a>]!</td>
 <td></td>
 </tr>
 </tbody>
@@ -1945,14 +1891,22 @@ Recommender info
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>data</strong></td>
-<td valign="top">[<a href="#newsubmitdata">NewSubmitData</a>!]!</td>
-<td></td>
+<td colspan="2" valign="top"><strong>basic</strong></td>
+<td valign="top">[<a href="#string">String</a>]!</td>
+<td>
+
+If element is null, the element won't be updated
+
+</td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>files</strong></td>
-<td valign="top">[<a href="#newsubmitfile">NewSubmitFile</a>!]!</td>
-<td></td>
+<td colspan="2" valign="top"><strong>uploads</strong></td>
+<td valign="top">[<a href="#upload">Upload</a>]!</td>
+<td>
+
+If element is null, the element won't be updated
+
+</td>
 </tr>
 </tbody>
 </table>
