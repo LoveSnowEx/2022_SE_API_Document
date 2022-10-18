@@ -176,7 +176,7 @@ Program id
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>docReivewApplicants</strong></td>
+<td colspan="2" valign="top"><strong>docReviewApplicants</strong></td>
 <td valign="top">[<a href="#applicant">Applicant</a>!]!</td>
 <td>
 
@@ -194,7 +194,7 @@ Program id
 </td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>oralReivewApplicants</strong></td>
+<td colspan="2" valign="top"><strong>oralReviewApplicants</strong></td>
 <td valign="top">[<a href="#applicant">Applicant</a>!]!</td>
 <td>
 
