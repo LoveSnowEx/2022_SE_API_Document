@@ -371,7 +371,7 @@ Get the count of all reviewers
 <tbody>
 <tr>
 <td colspan="2" valign="top"><strong>login</strong></td>
-<td valign="top"><a href="#void">Void</a></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td>
 
 Login user with email and password
@@ -704,7 +704,7 @@ User to create
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>updateUser</strong></td>
-<td valign="top"><a href="#void">Void</a>!</td>
+<td valign="top"><a href="#void">Void</a></td>
 <td>
 
 Update user
