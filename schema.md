@@ -77,6 +77,24 @@ Get user's self information
 </td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>program</strong></td>
+<td valign="top"><a href="#program">Program</a>!</td>
+<td>
+
+Get the information of single program
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">id</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>openedPrograms</strong></td>
 <td valign="top">[<a href="#program">Program</a>!]!</td>
 <td>
@@ -90,7 +108,7 @@ Get the programs opened now
 <td valign="top">[<a href="#program">Program</a>!]!</td>
 <td>
 
-Get user's own programs, according to role of user
+Get user's own programs. In other words, it will return the programs the user participated
 
 </td>
 </tr>
@@ -221,11 +239,29 @@ Get the document review progress, return null if program doesn't setup
 </td>
 </tr>
 <tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>oralReviewProgress</strong></td>
 <td valign="top">[<a href="#reviewprogress">ReviewProgress</a>!]</td>
 <td>
 
 Get the oral review progress, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
 
 </td>
 </tr>
@@ -288,7 +324,7 @@ Program id
 <td valign="top">[<a href="#reviewrubric">ReviewRubric</a>!]</td>
 <td>
 
-Get the doc review rubrics the reviewer made, return null if program doesn't setup
+Get the doc review rubrics responsible by the reviewer, return null if program doesn't setup
 
 </td>
 </tr>
@@ -306,7 +342,7 @@ Program id
 <td valign="top">[<a href="#reviewrubric">ReviewRubric</a>!]</td>
 <td>
 
-Get the oral review rubrics the reviewer made, return null if program doesn't setup
+Get the oral review rubrics responsible by the reviewer, return null if program doesn't setup
 
 </td>
 </tr>
@@ -581,7 +617,7 @@ Letter content
 <td valign="top"><a href="#id">ID</a>!</td>
 <td>
 
-Create new program
+Create a new program
 
 </td>
 </tr>
@@ -591,6 +627,24 @@ Create new program
 <td>
 
 Name of the program
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>deleteProgram</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+Delete a existed program
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">id</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
 
 </td>
 </tr>
@@ -699,6 +753,24 @@ Create user
 <td>
 
 User to create
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>deleteUser</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+Delete user
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">id</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+ID of user to delete
 
 </td>
 </tr>
