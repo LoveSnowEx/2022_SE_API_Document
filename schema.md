@@ -14,6 +14,8 @@
     * [Program](#program)
     * [ProgramForm](#programform)
     * [ProgramStatus](#programstatus)
+    * [RecommendInfo](#recommendinfo)
+    * [Recommender](#recommender)
     * [ReviewProgress](#reviewprogress)
     * [ReviewResult](#reviewresult)
     * [ReviewRubric](#reviewrubric)
@@ -118,6 +120,33 @@ Get user's own programs. In other words, it will return the programs the user pa
 <td>
 
 Get the form data applicant submited
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">applicantId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Applicant id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommendInfo</strong></td>
+<td valign="top"><a href="#recommendinfo">RecommendInfo</a>!</td>
+<td>
+
+Get the recommend info by recommender
 
 </td>
 </tr>
@@ -364,33 +393,6 @@ Get all users
 
 </td>
 </tr>
-<tr>
-<td colspan="2" valign="top"><strong>userCount</strong></td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td>
-
-Get the count of all users
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>programManagerCount</strong></td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td>
-
-Get the count of all program managers
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>reviewerCount</strong></td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td>
-
-Get the count of all reviewers
-
-</td>
-</tr>
 </tbody>
 </table>
 
@@ -527,12 +529,21 @@ New password
 <td valign="top"><a href="#void">Void</a></td>
 <td>
 
-Update user's profile
+Update user's profile, null field won't be update
 
 </td>
 </tr>
 <tr>
-<td colspan="2" align="right" valign="top">input</td>
+<td colspan="2" align="right" valign="top">name</td>
+<td valign="top"><a href="#string">String</a></td>
+<td>
+
+New name to update, null field won't be update
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">profile</td>
 <td valign="top"><a href="#newprofile">NewProfile</a>!</td>
 <td>
 
@@ -1158,6 +1169,70 @@ Status of the program
 <tr>
 <td colspan="2" valign="top"><strong>oralSetup</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### RecommendInfo
+
+Recommend info
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>applicant</strong></td>
+<td valign="top"><a href="#applicant">Applicant</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>recommender</strong></td>
+<td valign="top"><a href="#recommender">Recommender</a>!</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+### Recommender
+
+Recommender of applicant
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>phone</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>email</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>organization</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 </tbody>
