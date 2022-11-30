@@ -14,12 +14,15 @@
     * [Program](#program)
     * [ProgramForm](#programform)
     * [ProgramStatus](#programstatus)
+    * [ReasonRubricSetting](#reasonrubricsetting)
     * [RecommendInfo](#recommendinfo)
     * [Recommender](#recommender)
     * [ReviewProgress](#reviewprogress)
     * [ReviewResult](#reviewresult)
     * [ReviewRubric](#reviewrubric)
     * [Reviewer](#reviewer)
+    * [RubricSetting](#rubricsetting)
+    * [ScoreRubricSetting](#scorerubricsetting)
     * [SubmittedForm](#submittedform)
     * [SubmittedRecommendLetter](#submittedrecommendletter)
     * [UploadField](#uploadfield)
@@ -372,6 +375,42 @@ Program id
 <td>
 
 Get the oral review rubrics responsible by the reviewer, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>docRubricSetting</strong></td>
+<td valign="top"><a href="#rubricsetting">RubricSetting</a></td>
+<td>
+
+Get the doc review rubrics setting, return null if program doesn't setup
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oralRubricSetting</strong></td>
+<td valign="top"><a href="#rubricsetting">RubricSetting</a></td>
+<td>
+
+Get the oral review rubrics setting, return null if program doesn't setup
 
 </td>
 </tr>
@@ -894,10 +933,10 @@ Status of the program applicant applied
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>recommendLetter</strong></td>
-<td valign="top">[<a href="#boolean">Boolean</a>!]!</td>
+<td valign="top">[<a href="#boolean">Boolean</a>]!</td>
 <td>
 
-Return an empty array if no letter to write
+Null element if recommender not set
 
 </td>
 </tr>
@@ -1174,6 +1213,32 @@ Status of the program
 </tbody>
 </table>
 
+### ReasonRubricSetting
+
+Score rubric
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>type</strong></td>
+<td valign="top"><a href="#reasonrubrictype">ReasonRubricType</a>!</td>
+<td>
+
+Reason rubric type
+
+</td>
+</tr>
+</tbody>
+</table>
+
 ### RecommendInfo
 
 Recommend info
@@ -1421,6 +1486,76 @@ Phone of applicant
 <td>
 
 Email of applicant
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### RubricSetting
+
+Rubric settings for program
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>score</strong></td>
+<td valign="top">[<a href="#scorerubricsetting">ScoreRubricSetting</a>!]</td>
+<td>
+
+Null if the program doesn't setup score rubric
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>reason</strong></td>
+<td valign="top"><a href="#reasonrubricsetting">ReasonRubricSetting</a></td>
+<td>
+
+Null if the program doesn't setup reason rubric
+
+</td>
+</tr>
+</tbody>
+</table>
+
+### ScoreRubricSetting
+
+Score rubric
+
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="right">Argument</th>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="2" valign="top"><strong>name</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td>
+
+Score rubric name
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>ratio</strong></td>
+<td valign="top"><a href="#float">Float</a>!</td>
+<td>
+
+Score rubric ratio
 
 </td>
 </tr>
@@ -2183,11 +2318,11 @@ Applied but not yet determined eligibility
 </td>
 </tr>
 <tr>
-<td valign="top"><strong>ACCEPTED</strong></td>
+<td valign="top"><strong>ACCEPT</strong></td>
 <td></td>
 </tr>
 <tr>
-<td valign="top"><strong>REJECTED</strong></td>
+<td valign="top"><strong>REJECT</strong></td>
 <td></td>
 </tr>
 </tbody>
