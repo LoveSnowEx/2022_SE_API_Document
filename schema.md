@@ -595,7 +595,52 @@ New profile to update, null field won't be update
 <td valign="top"><a href="#void">Void</a></td>
 <td>
 
-Applicant or program manager update a submitted form
+Applicant update a submitted form
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">data</td>
+<td valign="top"><a href="#newupdatesubmittedform">NewUpdateSubmittedForm</a>!</td>
+<td>
+
+New update form
+
+</td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updateApplicantSubmittedForm</strong></td>
+<td valign="top"><a href="#void">Void</a></td>
+<td>
+
+Program manager update a submitted form of applicant
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">programId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Program id
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="right" valign="top">applicantId</td>
+<td valign="top"><a href="#id">ID</a>!</td>
+<td>
+
+Applicant id
 
 </td>
 </tr>
@@ -2167,11 +2212,6 @@ Recommender info
 </tr>
 </thead>
 <tbody>
-<tr>
-<td colspan="2" valign="top"><strong>programId</strong></td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td></td>
-</tr>
 <tr>
 <td colspan="2" valign="top"><strong>basic</strong></td>
 <td valign="top">[<a href="#string">String</a>]!</td>
